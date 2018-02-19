@@ -3,7 +3,12 @@ package com.example.service;
 import com.example.domain.User;
 import com.example.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -27,6 +32,13 @@ public class UserServiceImpl implements UserService {
         if (user != null) {
             userRepository.delete(id);
         }
+    }
+
+    public Collection<User> getAllUsers(){
+        return userRepository.findAll(new Sort("firstName"));
+
+
+
     }
 
 }
